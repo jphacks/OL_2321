@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import matplotlib
 matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 
 import numpy as np
