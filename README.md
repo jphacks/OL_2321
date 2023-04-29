@@ -1,1 +1,1 @@
-# EduTech-firast
+# EduTech-first
