@@ -1,97 +1,55 @@
-/* index.html */
+/* style.css */
+
 body {
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
-  }
+  background-image: url('usi.jpg');
+  font-family: 'Comic Sans MS', cursive;
+  background-repeat: repeat-y;
+  background-size: cover; 
+  font-size: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
   
-  .container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
+}
+
+h2 {
+  text-align: center;
+  margin-left: 0px; /* 任意の値を指定 */
+  margin-right: 100px;
+  margin-bottom: 5px; /* 任意の値を指定 */
+  font-size: 18px;
+  font-family: 'Comic Sans MS', cursive;
   
-  h1 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-  
-  form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  form input[type="number"] {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  form input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-  
-  form input[type="submit"]:hover {
-    background-color: #0069d9;
-  }
-  
-  /* results.html */
-  .results-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
-  
-  h1 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-  
-  .plot-container {
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .back-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-  }
-  
-  .back-btn:hover {
-    background-color: #0069d9;
-  }
-  
+}
+
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.subject-row {
+  margin-bottom: 20px;
+}
+
+input[type="number"] {
+  width: 60px;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+input[type="submit"] {
+  display: block;
+  margin: 20px auto;
+}
+
+.chart-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.chart-container {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}

@@ -1,21 +1,70 @@
-<!doctype html>
-<html>
-  <head>
-    <title>EduViz</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<!-- index.html -->
 
-  </head>
-  <body>
-    <h1>EduViz</h1>
-    <form action="{{ url_for('results') }}" method="post">
-        <label for="study_hours">Study Hours:</label>
-        <input type="number" id="study_hours" name="study_hours" required>
-        <br>
-        <label for="score">Score:</label>
-        <input type="number" id="score" name="score" required>
-        <br>
-        <button type="submit">Submit</button>
-      </form>
-    </body>
-  </html>
-  
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mootion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Motion🐄</h1>
+    <h2>Enter your study hours for the week👦</h2>
+    <form method="POST" action="{{ url_for('index') }}">
+        {% for subject, hours in data %}
+        <div class="subject-row">
+            <label for="{{ subject }}">{{ subject }}</label>
+            <input type="number" name="hours" id="{{ subject }}" value="{{ hours }}">
+            <input type="hidden" name="subject" value="{{ subject }}">
+        </div>
+        {% endfor %}
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown</title>
+</head>
+<body>
+    <h1>Days remaining before the exam:{{ remaining_days }}day</h1>
+</body>
+</html>
+
+<form action="{{ url_for('exam') }}" method="post">
+    <label for="exam_date">Test day:</label>
+    <input type="date" id="exam_date" name="exam_date" required>
+    <br>
+    <button type="submit">Calculate the number of Days remaining</button>
+  </form>
+
+<!-- word_chain.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Chain Game</title>
+</head>
+<body>
+    <h1>Word Chain Game for TOEIC</h1>
+    <style>
+        h2 {
+            color: blue; /* 任意の色に変更 */
+        }
+    </style>   
+    <h2>Your word: {{ user_word }}</h2>
+    {% if computer_word %}
+    <h2>Computer's word: {{ computer_word }}</h2>
+    <h3>Part of speech: {{ pos }}</h3>
+    {% else %}
+    <h2>☟Enter an English word here☟</h2>
+    {% endif %}
+    <form method="POST" action="{{ url_for('word_chain') }}">
+        <input type="text" name="user_word" placeholder="Enter a word">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

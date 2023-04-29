@@ -1,0 +1,5 @@
+C:\Users\yodar\anaconda3
+C:\Users\yodar\anaconda3\envs\streamlit
+C:\Users\yodar\anaconda3\envs\Django
+C:\Users\yodar\anaconda3\envs\myenv
+C:\Users\yodar\anaconda3\envs\test

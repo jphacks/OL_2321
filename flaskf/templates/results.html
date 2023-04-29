@@ -1,12 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>EduViz - Results</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<head>
+    <title>Study Time Allocation - Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<div class="correlation-container">
+    <img src="{{ url_for('static', filename='correlation.png') }}" alt="Correlation Graph">
+</div>
+<body>
+    <h1>Study Time Allocation - Result</h1>
+    <div class="chart-container">
+        <canvas id="chart"></canvas>
+    </div>
 
-  </head>
-  <body>
-    <h1>Results</h1>
-    <img src="data:image/png;base64, {{ plot_data }}" />
-  </body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script>
+    // データの取得
+    var subjects = JSON.parse('{{ subjects|tojson|safe }}');
+    var hours = JSON.parse('{{ hours|tojson|safe }}');
+
+    // 円グラフの描画
+    var ctx = document.getElementById('chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: subjects,
+            datasets: [{
+                data: hours,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)', // 追加の背景色
+                    'rgba(50, 205, 50, 0.7)' // 追加の背景色
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)', // 追加の枠線色
+                    'rgba(50, 205, 50, 1)' // 追加の枠線色
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'bottom'
+            },
+            plugins: {
+                datalabels: {
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = ((value * 100) / sum).toFixed(1) + '%';
+                        return percentage;
+                    },
+                    color: '#fff',
+                    font: {
+                        size: '14'
+                    }
+                }
+            }
+        }
+    });
+</script>

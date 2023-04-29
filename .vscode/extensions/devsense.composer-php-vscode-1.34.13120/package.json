@@ -1,0 +1,314 @@
+{
+	"name": "composer-php-vscode",
+	"displayName": "Composer",
+	"description": "All-in-One composer integration, quick actions, commands, automatic installation, tasks, code lenses, diagnostics, and composer.json IntelliSense.",
+	"icon": "icons/composer-icon.png",
+	"version": "1.34.13120",
+	"qna": "https://community.devsense.com/",
+	"publisher": "DEVSENSE",
+	"preview": false,
+	"license": "LicenseRef-LICENSE",
+	"galleryBanner": {
+		"color": "#b9dcf4",
+		"theme": "light"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DEVSENSE/phptools-docs"
+	},
+	"homepage": "https://www.devsense.com/",
+	"engines": {
+		"vscode": "^1.63.1",
+		"node": "^8.11.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Linters",
+		"Other",
+		"Visualization"
+	],
+	"keywords": [
+		"php",
+		"composer",
+		"schema",
+		"validation",
+		"commands",
+		"tools",
+		"php tools",
+		"packagist",
+		"codelens"
+	],
+	"activationEvents": [
+		"workspaceContains:composer.json",
+		"onCommand:composer.download",
+		"onCommand:composer.install",
+		"onCommand:composer.require",
+		"onCommand:composer.require-dev",
+		"onCommand:composer.update",
+		"onCommand:composer.remove",
+		"onCommand:composer.clear-cache",
+		"onCommand:composer.create-project",
+		"onCommand:composer.search",
+		"onCommand:composer.about",
+		"onCommand:composer.licenses",
+		"onCommand:composer.fund",
+		"onCommand:composer.archive",
+		"onCommand:composer.reinstall",
+		"onCommand:composer.check-platform-reqs",
+		"onCommand:composer.run-script",
+		"onCommand:composer.show-tree",
+		"onCommand:composer.outdated"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "json"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Composer",
+			"properties": {
+				"composer.workingPath": {
+					"markdownDescription": "%composer.workingPath.description%",
+					"scope": "resource",
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null
+				}
+			}
+		},
+		"jsonValidation": [
+			{
+				"fileMatch": "composer.json",
+				"url": "https://raw.githubusercontent.com/composer/composer/master/res/composer-schema.json"
+			}
+		],
+		"commands": [
+			{
+				"category": "Composer",
+				"title": "%commands.download.title%",
+				"command": "composer.download"
+			},
+			{
+				"category": "Composer",
+				"title": "install",
+				"command": "composer.install"
+			},
+			{
+				"category": "Composer",
+				"title": "update",
+				"command": "composer.update"
+			},
+			{
+				"category": "Composer",
+				"title": "create-project ...",
+				"command": "composer.create-project"
+			},
+			{
+				"category": "Composer",
+				"title": "require package ...",
+				"command": "composer.require"
+			},
+			{
+				"category": "Composer",
+				"title": "require dev package ...",
+				"command": "composer.require-dev"
+			},
+			{
+				"category": "Composer",
+				"title": "remove package ...",
+				"command": "composer.remove"
+			},
+			{
+				"category": "Composer",
+				"title": "about",
+				"command": "composer.about"
+			},
+			{
+				"category": "Composer",
+				"title": "archive ...",
+				"command": "composer.archive"
+			},
+			{
+				"category": "Composer",
+				"title": "clear-cache",
+				"command": "composer.clear-cache"
+			},
+			{
+				"category": "Composer",
+				"title": "fund",
+				"command": "composer.fund"
+			},
+			{
+				"category": "Composer",
+				"title": "licenses",
+				"command": "composer.licenses"
+			},
+			{
+				"category": "Composer",
+				"title": "check-platform-reqs",
+				"command": "composer.check-platform-reqs"
+			},
+			{
+				"category": "Composer",
+				"title": "outdated",
+				"command": "composer.outdated"
+			},
+			{
+				"category": "Composer",
+				"title": "%commands.search.title%",
+				"command": "composer.search"
+			},
+			{
+				"category": "Composer",
+				"title": "reinstall",
+				"command": "composer.reinstall"
+			},
+			{
+				"category": "Composer",
+				"title": "run-script ...",
+				"command": "composer.run-script"
+			},
+			{
+				"category": "Composer",
+				"title": "show --tree",
+				"command": "composer.show-tree"
+			}
+		],
+		"taskDefinitions": [
+			{
+				"type": "composer",
+				"properties": {
+					"command": {
+						"type": "string",
+						"enum": [
+							"init",
+							"install",
+							"update",
+							"require",
+							"remove",
+							"bump",
+							"reinstall",
+							"check-platform-reqs",
+							"global",
+							"search",
+							"show",
+							"outdated",
+							"browse",
+							"suggests",
+							"fund",
+							"depends",
+							"prohibits",
+							"validate",
+							"status",
+							"self-update",
+							"config",
+							"create-project",
+							"dump-autoload",
+							"clear-cache",
+							"licenses",
+							"run-script",
+							"exec",
+							"diagnose",
+							"archive",
+							"audit",
+							"help"
+						],
+						"format": "[a-z\\-]+",
+						"description": "%task.composer.command.description%"
+					},
+					"args": {
+						"type": "array",
+						"description": "%task.composer.args.description%"
+					}
+				},
+				"required": [
+					"command"
+				]
+			}
+		],
+		"keybindings": [],
+		"debuggers": [],
+		"walkthroughs": []
+	},
+	"capabilities": {
+		"virtualWorkspaces": {
+			"supported": "limited",
+			"description": "%capabilities.virtualWorkspaces.description%"
+		},
+		"untrustedWorkspaces": {
+			"supported": true,
+			"description": "%capabilities.untrustedWorkspaces.description%"
+		}
+	},
+	"badges": [
+		{
+			"url": "https://badgen.net/badge/@php4vs/twitter/blue?icon=twitter",
+			"href": "https://twitter.com/php4vs",
+			"description": "PHP Tools on Twitter"
+		},
+		{
+			"url": "https://img.shields.io/badge/-changelog-green",
+			"href": "https://www.devsense.com/en?from=vscode",
+			"description": "PHP Tools product page"
+		}
+	],
+	"scripts": {
+		"prepare": "powershell ./prepare.ps1",
+		"precompile": "npm run -S prepare",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node",
+		"vscode:prepublish": "npm run -S esbuild-base -- --minify && powershell ./minify.ps1",
+		"compile": "npm run -S esbuild-base -- --sourcemap",
+		"postinstall": "",
+		"vscode:uninstall": ""
+	},
+	"dependencies": {
+		"applicationinsights": "^1.8.10",
+		"escape-string-regexp": "^1.0.5",
+		"file-url": "^2.0.0",
+		"http-proxy-agent": "^2.1.0",
+		"https-proxy-agent": "^2.2.4",
+		"iconv-lite": "^0.4.15",
+		"jsencrypt": "^3.2.1",
+		"minimatch": "^3.0.4",
+		"moment": "^2.17.1",
+		"node-rsa": "^1.0.7",
+		"open": "^8.4.0",
+		"recursive-readdir-sync": "^1.0.6",
+		"string-hash": "^1.1.3",
+		"urlencode": "^1.1.0",
+		"uuid": "^7",
+		"vsce": "^2.7.0",
+		"vscode-languageclient": "^7.0.0",
+		"vscode-languageserver": "^7.0.0",
+		"vscode-languageserver-protocol-foldingprovider": "^2.0.1",
+		"vscode-languageserver-textdocument": "^1.0.7",
+		"xmldom": "^0.6.0",
+		"xmlhttprequest": "^1.8.0"
+	},
+	"devDependencies": {
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^10.17.60",
+		"@types/vscode": "^1.63.1",
+		"esbuild": "^0.14.48",
+		"mocha": "^9.2.2",
+		"typescript": "^4.7.4",
+		"uglify-js": "^3.16.1"
+	},
+	"__metadata": {
+		"id": "eed2a934-7bb6-4a5b-a29d-353077efd839",
+		"publisherId": "5db849bc-0940-444f-8936-5d2cdbb81abb",
+		"publisherDisplayName": "DEVSENSE",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1683910266591,
+		"preRelease": false
+	}
+}

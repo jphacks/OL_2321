@@ -1,0 +1,5 @@
+{
+    "target": "win32-x64",
+    "runtime": "win-x64",
+    "version": "1.34.13120"
+}

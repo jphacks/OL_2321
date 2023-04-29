@@ -1,0 +1,15 @@
+{
+	"title": "Composer",
+    "description": "All-in-One composer integration, quick actions, commands, automatic installation, tasks, code lenses, diagnostics, and composer.json IntelliSense.",
+    
+    "commands.download.title": "update local 'composer.phar' ...",
+    "commands.search.title": "search ...",
+
+    "composer.workingPath.description": "Root path for the `composer.json` and `vendor` folders. By default, it's the root of the workspace.",
+
+    "task.composer.command.description": "The composer command to run.",
+    "task.composer.args.description": "Additional arguments for the composer command.",
+
+    "capabilities.virtualWorkspaces.description": "In virtual workspaces, composer packages can't be installed or updated.",
+    "capabilities.untrustedWorkspaces.description": "The extension may require workspace trust to use 'php' 3rd party tool, or to navigate to PHP documentation website, or to navigate to the product website."
+}

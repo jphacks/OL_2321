@@ -1,0 +1,36 @@
+2023-03-21 15:46:50,277 - ERROR __init__.global_exception_logger:19
+103
+Traceback (most recent call last):
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 556, in <lambda>
+    return lambda: self.set_action_status(model_index, status=action, version=version)
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 502, in set_action_status
+    self.refresh_actions()
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 728, in refresh_actions
+    actions_per_package_type = self.source_model.get_actions()
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\model.py", line 326, in get_actions
+    dic[type_][action].append({
+KeyError: 103
+2023-03-21 15:46:57,930 - ERROR __init__.global_exception_logger:19
+104
+Traceback (most recent call last):
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 556, in <lambda>
+    return lambda: self.set_action_status(model_index, status=action, version=version)
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 502, in set_action_status
+    self.refresh_actions()
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 728, in refresh_actions
+    actions_per_package_type = self.source_model.get_actions()
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\model.py", line 326, in get_actions
+    dic[type_][action].append({
+KeyError: 104
+2023-03-21 15:47:04,219 - ERROR __init__.global_exception_logger:19
+103
+Traceback (most recent call last):
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 556, in <lambda>
+    return lambda: self.set_action_status(model_index, status=action, version=version)
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 502, in set_action_status
+    self.refresh_actions()
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\table.py", line 728, in refresh_actions
+    actions_per_package_type = self.source_model.get_actions()
+  File "C:\Users\yodar\anaconda3\lib\site-packages\anaconda_navigator\widgets\manager\model.py", line 326, in get_actions
+    dic[type_][action].append({
+KeyError: 103
