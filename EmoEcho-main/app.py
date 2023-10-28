@@ -4,6 +4,7 @@ import os
 import re
 import json
 
+
 app = Flask(__name__)
 CONVERSATION_FILE = 'conversation.json'
 
@@ -12,7 +13,16 @@ def save_conversation():
         json.dump(messages, f, ensure_ascii=False, indent=4)
 
 # Set your OpenAI API key
-openai.api_key = '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'
+def load_api_key_from_config(filepath):
+    with open(filepath, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            key, value = line.strip().split('=')
+            if key == "OPENAI_API_KEY":
+                return value
+
+api_key_path = "EmoEcho-main/config.txt"
+openai.api_key = load_api_key_from_config(api_key_path)
 
 # Initialize the conversation with the system role
 messages = [
