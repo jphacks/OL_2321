@@ -64,23 +64,23 @@ body {
         }
 
 
-        #endInterviewButton {
-            position: fixed;
-            bottom: 70px; /* chat-inputの下に配置 */
-            right: 20px;
-            z-index: 10; /* chat-containerより上に表示するためのz-index */
-            padding: 10px 15px;
-            background-color: #BC8F8F;
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            outline: none;
-        }
-        
-        #endInterviewButton:hover {
-            background-color: #9E7A7A;
-            z-index: 1000;
-        }
+#endInterviewButton {
+    position: fixed;
+    bottom: 50px; /* chat-inputの下に配置 */
+    right: 20px;
+    z-index: 10; /* chat-containerより上に表示するためのz-index */
+    padding: 10px 15px;
+    background-color: #BC8F8F;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    outline: none;
+}
+
+/* #endInterviewButton:hover {
+    background-color: #9E7A7A;
+    z-index: 1000;
+} */
         

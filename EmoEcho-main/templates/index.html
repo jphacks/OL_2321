@@ -206,14 +206,33 @@
             #theme-toggle-btn:hover {
                 background-color: #1a6fa5;
             }
+
+        #endInterviewButton {
+            position: fixed;
+            bottom: 50px; /* chat-inputの下に配置 */
+            right: 20px;
+            z-index: 10; /* chat-containerより上に表示するためのz-index */
+            padding: 10px 15px;
+            background-color: #BC8F8F;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
     </style>
+
+
 </head>
 
 <body>
+    <button id="endInterviewButton">面接を終了</button>
+
     <button id="theme-toggle-btn">&#9788;</button>
     <div class="chat-container">
         <div class="chat-header">
-            EmoEcho
+            IntelliView
         </div>
         <div id="chatbox" class="chatbox">
             <!-- Messages will be added here dynamically -->
@@ -224,7 +243,6 @@
         </div>
     </div>
 
-    <button id="endInterviewButton">面接を終了</button>
 
     <script>
         document.getElementById('endInterviewButton').addEventListener('click', function() {
@@ -235,7 +253,6 @@
             .then(data => {
                 if(data.status === 'success') {
                     alert(data.message);
-                    // ここに、操作完了後の追加の動作や指示を追加できます
                 } else {
                     alert('エラーが発生しました。');
                 }
@@ -274,6 +291,8 @@
             }
         });
 
+        
+
         // Toggle dark/light mode
         $('#theme-toggle-btn').on('click', function () {
             $('body').toggleClass('dark-mode');
@@ -291,6 +310,8 @@
             $('body').addClass('dark-mode');
         }
     </script>
+    
+    
 </body>
 
 </html>
