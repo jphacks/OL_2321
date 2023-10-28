@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with GPT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #BC8F8F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #BC8F8F;
+        }
+
+        .chat-header {
+            background-color: #BC8F8F;
+            color: #BC8F8F;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .chatbox {
+            height: 400px;
+            overflow-y: scroll;
+            padding: 10px;
+            border-top: 1px solid #BC8F8F;
+            border-bottom: 1px solid #BC8F8F;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+        }
+
+            .chat-input input {
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 5px 0 0 5px;
+                outline: none;
+            }
+
+            .chat-input button {
+                padding: 10px 15px;
+                border: none;
+                background-color: #BC8F8F;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 0 5px 5px 0;
+                transition: background-color 0.3s ease;
+                outline: none;
+            }
+
+                .chat-input button:hover {
+                    background-color: #BC8F8F;
+                }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            Chat with GPT
+        </div>
+        <div id="chatbox" class="chatbox">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#send-btn').on('click', function () {
+            const message = $('#message-input').val();
+            if (message.trim()) {
+                $('#chatbox').append('<div style="text-align: right; margin: 10px; color: #2980b9;">' + message + '</div>');
+                $('#message-input').val('');
+
+                // Make AJAX request here to Flask endpoint
+                $.ajax({
+                    url: '/message',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ 'message': message }),
+                    success: function (response) {
+                        $('#chatbox').append('<div style="text-align: left; margin: 10px; color: #7f8c8d;">' + response.message + '</div>');
+                        const chatbox = document.getElementById("chatbox");
+                        chatbox.scrollTop = chatbox.scrollHeight;
+                    }
+                });
+            }
+        });
+
+        // Pressing enter to send message
+        $('#message-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#send-btn').click();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

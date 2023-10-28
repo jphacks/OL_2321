@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmoEcho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('cafe.jpg');
+            background-repeat: repeat-y;
+            background-size: cover; 
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .chat-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('cafe.jpg');
+            background-repeat: repeat-y;
+            background-size: cover; 
+            position: relative;
+            background-color: #faebd7;
+        }
+
+        .chat-header {
+            background-color: #BC8F8F;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 8;
+        }
+
+        .chatbox {
+            padding: 10px;
+            position: absolute;
+            top: 60px;
+            bottom: 60px;
+            width: 100%;
+            font-family: 'Comic Sans MS', cursive;
+            overflow-y: scroll;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #faebd7;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+            .chat-input input {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #BC8F8F;
+                border-radius: 20px 0 0 20px;
+                outline: none;
+                font-family: 'Comic Sans MS', cursive;
+                transition: border-color 0.3s ease;
+            }
+
+                .chat-input input:focus {
+                    border-color: #BC8F8F;
+                }
+
+            .chat-input button {
+                border: none;
+                background-color: #BC8F8F;
+                cursor: pointer;
+                font-family: 'Comic Sans MS', cursive;
+                border-radius: 0 20px 20px 0;
+                padding: 10px;
+                outline: none;
+                transition: background-color 0.3s ease;
+            }
+
+                .chat-input button:hover {
+                    background-color: #BC8F8F;
+                }
+
+        .message {
+            margin: 8px 0;
+            max-width: 80%;
+            clear: both;
+            font-size: 0.95em;
+        }
+
+            .message.user {
+                text-align: right;
+            }
+
+                .message.user .bubble {
+                    display: inline-block;
+                    background-color: #BC8F8F;
+                    color: #fff;
+                    font-family: 'Comic Sans MS', cursive;
+                    padding: 10px 15px;
+                    border-radius: 15px 0 15px 15px;
+                    margin-right: 10px;
+                }
+
+            .message.bot .bubble {
+                display: inline-block;
+                background-color: #BC8F8F;
+                color: #fff;
+                font-family: 'Comic Sans MS', cursive;
+                padding: 10px 15px;
+                border-radius: 0 15px 15px 15px;
+                margin-left: 10px;
+            }
+            .message.bot h2 {
+                font-size: 1.2em;
+                font-family: 'Comic Sans MS', cursive;
+                margin-bottom: 8px;
+            }
+
+            .message.bot h3 {
+                font-size: 1.1em;
+                font-family: 'Comic Sans MS', cursive;
+                margin-bottom: 6px;
+            }
+
+            .message.bot ul {
+                font-family: 'Comic Sans MS', cursive;
+                padding-left: 20px;
+            }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #222;
+        }
+
+            body.dark-mode .chat-container {
+                background-color: #333;
+            }
+
+            body.dark-mode .chat-header {
+                background-color: #444;
+            }
+
+            body.dark-mode .chat-input {
+                background-color: #444;
+                box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
+            }
+
+                body.dark-mode .chat-input input {
+                    background-color: #555;
+                    border-color: #666;
+                    color: #ccc;
+                }
+
+                    body.dark-mode .chat-input input:focus {
+                        border-color: #777;
+                    }
+
+                body.dark-mode .chat-input button {
+                    background-color: #555;
+                }
+
+                    body.dark-mode .chat-input button:hover {
+                        background-color: #666;
+                    }
+
+            body.dark-mode .message.user .bubble {
+                background-color: #777;
+            }
+
+            body.dark-mode .message.bot .bubble {
+                background-color: #555;
+            }
+
+        /* Theme toggle button */
+        #theme-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+            #theme-toggle-btn:hover {
+                background-color: #1a6fa5;
+            }
+    </style>
+</head>
+
+<body>
+    <button id="theme-toggle-btn">&#9788;</button>
+    <div class="chat-container">
+        <div class="chat-header">
+            EmoEcho
+        </div>
+        <div id="chatbox" class="chatbox">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-btn">&#9658;</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#send-btn').on('click', function () {
+            const message = $('#message-input').val();
+            if (message.trim()) {
+                $('#chatbox').append('<div class="message user"><div class="bubble">' + message + '</div></div>');
+                $('#message-input').val('');
+
+                // Make AJAX request here to Flask endpoint
+                $.ajax({
+                    url: '/message',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ 'message': message }),
+                    success: function (response) {
+                        $('#chatbox').append('<div class="message bot"><div class="bubble">' + response.message + '</div></div>');
+                        const chatbox = document.getElementById("chatbox");
+                        chatbox.scrollTop = chatbox.scrollHeight;
+                    }
+                });
+            }
+        });
+
+        // Pressing enter to send message
+        $('#message-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#send-btn').click();
+                return false;
+            }
+        });
+
+        // Toggle dark/light mode
+        $('#theme-toggle-btn').on('click', function () {
+            $('body').toggleClass('dark-mode');
+
+            // Remember the user's preference using local storage
+            if ($('body').hasClass('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // On page load, check user's preference
+        if (localStorage.getItem('theme') === 'dark-mode') {
+            $('body').addClass('dark-mode');
+        }
+    </script>
+</body>
+
+</html>
