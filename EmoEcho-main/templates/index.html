@@ -224,6 +224,25 @@
         </div>
     </div>
 
+    <button id="endInterviewButton">面接を終了</button>
+
+    <script>
+        document.getElementById('endInterviewButton').addEventListener('click', function() {
+            fetch('/end_interview', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    alert(data.message);
+                    // ここに、操作完了後の追加の動作や指示を追加できます
+                } else {
+                    alert('エラーが発生しました。');
+                }
+            });
+        });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('#send-btn').on('click', function () {
