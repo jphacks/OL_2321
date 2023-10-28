@@ -12,7 +12,7 @@ def save_conversation():
         json.dump(messages, f, ensure_ascii=False, indent=4)
 
 # Set your OpenAI API key
-openai.api_key = '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'
+openai.api_key = 'xxxx'
 
 # Initialize the conversation with the system role
 messages = [
